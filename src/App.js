@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import { HashRouter, Route, Link } from "react-router-dom";
+import Test from "./Pages/Test";
+import PhotoManipuation from "./Pages/PixelEffects/PhotoManipulation";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <HashRouter basename="/">
+      <div className="wrapper">
+        <Route exact path="/" component={About} />
+        <Route path="/test" component={Test} />
+        <Route path="/Canvas-Photo-Manipulation" component={PhotoManipuation} />
+      </div>
+    </HashRouter>
   );
 }
+const About = () => (
+  <div>
+    <Link to="/">Home</Link>
+    <Link to="/test">About</Link>
+    <Link to="/Canvas-Photo-Manipulation">Pixel Effects</Link>
+
+    <hr />
+  </div>
+);
 
 export default App;
